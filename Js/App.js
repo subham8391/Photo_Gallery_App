@@ -93,7 +93,7 @@ imageGallery.addEventListener('click', (e) => {
         modalImage.alt = imageAlt;
         imageDetails.textContent = imageDescription;
 
-        // Construct the download link
+        //  download link
         const downloadUrl = `${imageUrl}&dl=1`;
         downloadLink.href = downloadUrl;
 
@@ -105,7 +105,7 @@ closeModal.addEventListener('click', () => {
     imageModal.style.display = 'none';
 });
 
-
+//close modal
 window.addEventListener('click', (e) => {
     if (e.target === imageModal) {
         imageModal.style.display = 'none';
