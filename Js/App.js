@@ -1,5 +1,31 @@
 // api key=>(uXW_ZmyeDgDJhvn4HO0Dyu1WNgnas07RccYuS6dCHLw) unspalash
 
+//loding State
+const loadingIndicator = document.getElementById('loadingIndicator');
+function showLoadingIndicator() {
+    loadingIndicator.style.display = 'flex';
+}
+
+function hideLoadingIndicator() {
+    loadingIndicator.style.display = 'none';
+}
+
+//Error Massage Display
+
+function showError(message) {
+    const errorElement = document.createElement('div');
+    errorElement.className = 'error';
+    errorElement.textContent = message;
+    imageGallery.style.display = 'none';
+    searchButton.style.display = 'none';
+    searchInput.style.display='none';
+    loadMoreButton.style.display = 'none';
+    
+    // Append the error message to the container
+    document.querySelector('.container').appendChild(errorElement);
+}
+
+
 const itemsPerPage = 20;
 let currentPage = 1;
 let randomImagesLoaded = false;
@@ -31,6 +57,8 @@ loadMoreButton.addEventListener('click', () => {
 async function fetchImages() {
     const apiKey = 'uXW_ZmyeDgDJhvn4HO0Dyu1WNgnas07RccYuS6dCHLw'; 
     try {
+        showLoadingIndicator();
+
         let url;
         if (searchTerm && currentPage === 1) {
             url = `https://api.unsplash.com/search/photos?query=${searchTerm}&per_page=${itemsPerPage}&page=${currentPage}&client_id=${apiKey}`;
@@ -44,7 +72,15 @@ async function fetchImages() {
 
         const response = await fetch(url);
         if (!response.ok) {
-            throw new Error('Network response was not ok');
+            // Handle the 404 error
+            if (response.status === 404) {
+                showError('Error: 404 Not Found');
+            } else {
+                showError('An error occurred. Please try again later...');
+            }
+            // Hide the loading indicator
+            hideLoadingIndicator();
+            return;
         }
 
         const data = await response.json();
@@ -53,8 +89,13 @@ async function fetchImages() {
         } else {
             appendImages(data);
         }
+
+        hideLoadingIndicator();
     } catch (error) {
         console.error(error);
+        // Show an error message in case of an error
+        showError('An error occurred. Please try again later.');
+        hideLoadingIndicator();
     }
 }
 
@@ -93,7 +134,7 @@ imageGallery.addEventListener('click', (e) => {
         modalImage.alt = imageAlt;
         imageDetails.textContent = imageDescription;
 
-        // Construct the download link
+        //  download link
         const downloadUrl = `${imageUrl}&dl=1`;
         downloadLink.href = downloadUrl;
 
@@ -105,7 +146,7 @@ closeModal.addEventListener('click', () => {
     imageModal.style.display = 'none';
 });
 
-
+// modal close
 window.addEventListener('click', (e) => {
     if (e.target === imageModal) {
         imageModal.style.display = 'none';
