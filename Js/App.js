@@ -55,7 +55,7 @@ loadMoreButton.addEventListener('click', () => {
 });
 
 async function fetchImages() {
-    const apiKey = 'uXW_ZmyeDgDJhvn4HO0Dyu1WNgnas07RccYuS6dCHLw'; 
+    const apiKey = 'fDIYrQjqffXnRAVX8ATHLziubdZvSNjSE8gXqP_R7To'; 
     try {
         showLoadingIndicator();
 
