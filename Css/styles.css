@@ -1,4 +1,4 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -7,7 +7,6 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
-   
 }
 
 .container {
@@ -20,7 +19,7 @@ body {
     text-align: center;
 }
 
-h1 {
+.header {
     margin-bottom: 1.25rem;
 }
 
@@ -57,9 +56,12 @@ button {
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
     transition: all 0.5s ease;
 }
-.gallery img:hover{
+
+.gallery img:hover {
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
+
+/* Modal Styles */
 .modal {
     display: none;
     position: fixed;
@@ -67,7 +69,7 @@ button {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.7);
+    background-color: rgba(0, 0, 0, 0.7);
     z-index: 1;
 }
 
@@ -81,7 +83,7 @@ button {
     text-align: center;
     padding: 20px;
     border-radius: 5px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .close {

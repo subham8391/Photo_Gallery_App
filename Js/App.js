@@ -29,8 +29,7 @@ loadMoreButton.addEventListener('click', () => {
 });
 
 async function fetchImages() {
-    const apiKey = 'uXW_ZmyeDgDJhvn4HO0Dyu1WNgnas07RccYuS6dCHLw';
-
+    const apiKey = 'uXW_ZmyeDgDJhvn4HO0Dyu1WNgnas07RccYuS6dCHLw'; 
     try {
         let url;
         if (searchTerm && currentPage === 1) {
@@ -65,6 +64,7 @@ function displayImages(images) {
         const image = document.createElement('img');
         image.src = imageData.urls.small;
         image.alt = imageData.alt_description;
+        image.setAttribute('data-description', imageData.description);
         imageGallery.appendChild(image);
     });
 }
@@ -74,13 +74,14 @@ function appendImages(images) {
         const image = document.createElement('img');
         image.src = imageData.urls.small;
         image.alt = imageData.alt_description;
+        image.setAttribute('data-description', imageData.description); 
         imageGallery.appendChild(image);
     });
 }
 
 fetchImages();
 
-//Modal
+// Modal
 
 imageGallery.addEventListener('click', (e) => {
     if (e.target.tagName === 'IMG') {
@@ -104,14 +105,14 @@ closeModal.addEventListener('click', () => {
     imageModal.style.display = 'none';
 });
 
-// Close modal
+
 window.addEventListener('click', (e) => {
     if (e.target === imageModal) {
         imageModal.style.display = 'none';
     }
 });
 
-// Close the modal when  Escape key
+
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         imageModal.style.display = 'none';
