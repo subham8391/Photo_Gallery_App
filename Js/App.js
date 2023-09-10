@@ -146,7 +146,7 @@ closeModal.addEventListener('click', () => {
     imageModal.style.display = 'none';
 });
 
-// modal close
+
 window.addEventListener('click', (e) => {
     if (e.target === imageModal) {
         imageModal.style.display = 'none';
