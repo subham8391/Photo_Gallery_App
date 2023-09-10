@@ -41,14 +41,22 @@ const closeModal = document.getElementById('closeModal');
 const modalImage = document.getElementById('modalImage');
 const imageDetails = document.getElementById('imageDetails');
 const downloadLink = document.getElementById('downloadLink');
-
+//For searching 
 searchButton.addEventListener('click', () => {
     searchTerm = searchInput.value;
     currentPage = 1;
     randomImagesLoaded = false;
     fetchImages();
 });
-
+searchInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        searchTerm = searchInput.value;
+        currentPage = 1;
+        randomImagesLoaded = false;
+        fetchImages();
+    }
+});
+//For looding
 loadMoreButton.addEventListener('click', () => {
     currentPage++;
     fetchImages();
