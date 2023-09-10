@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery</title>
+    <link rel="stylesheet" href="./Css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="headder">Image Gallery</h1>
+        <input type="text" id="searchInput" placeholder="Search for images">
+        <button id="searchButton">Search</button>
+        <div class="gallery" id="imageGallery"></div>
+        <button id="loadMore">View More</button>
+<!-- modal -->
+        <div id="imageModal" class="modal">
+            <div class="modal-content">
+                <span class="close" id="closeModal">&times;</span>
+                <img id="modalImage" src="" alt="Modal Image">
+                <div id="imageDetails"></div>
+                <a id="downloadLink" href="#" download>Download</a>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="./Js/App.js"></script>
+</body>
+</html>
